@@ -6,7 +6,7 @@ import { brand } from './colors'
 const overrides = {
     styles,
     fonts: {
-        fonts
+        ...fonts
     },
     colors: {
         brand
