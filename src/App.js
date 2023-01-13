@@ -8,11 +8,18 @@ import {
   ChakraProvider,
 } from '@chakra-ui/react';
 import theme from './theme'
+import Home from './page/Home';
+import Header from './components/Header';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-    </ChakraProvider>
+    <BrowserRouter>
+      <ChakraProvider theme={theme}>
+        <Header />
+        <Home />
+      </ChakraProvider>
+    </BrowserRouter>
   );
 }
 
