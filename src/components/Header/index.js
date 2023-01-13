@@ -1,4 +1,4 @@
-import { Container, Drawer, DrawerCloseButton, DrawerContent, DrawerOverlay, Flex, HStack, IconButton, useDisclosure } from '@chakra-ui/react';
+import { Container, Drawer, DrawerCloseButton, DrawerContent, DrawerOverlay, Flex, IconButton, useDisclosure } from '@chakra-ui/react';
 import React from 'react';
 import Navigation from '../Navigation';
 import Logo from '../../assets/icon/logo.svg';
