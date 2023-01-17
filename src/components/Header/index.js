@@ -9,7 +9,7 @@ const Header = () => {
 
     return (
         <>
-            <Container as="header" p={4} maxW='2xl'>
+            <Container as="header">
                 <Flex alignItems={'center'} justifyContent={'space-between'} gap={8}>
                     <IconButton
                         size={'md'}
