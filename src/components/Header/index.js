@@ -1,7 +1,7 @@
 import { Container, Drawer, DrawerCloseButton, DrawerContent, DrawerOverlay, Flex, IconButton, useDisclosure } from '@chakra-ui/react';
 import React from 'react';
 import Navigation from '../Navigation';
-import Logo from '../../assets/icon/logo.svg';
+import Logo from '../../assets/svg/logo.svg';
 import { HamburgerIcon } from '@chakra-ui/icons';
 
 const Header = () => {
