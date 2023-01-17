@@ -1,13 +1,12 @@
 import React from 'react';
-import { Box, Button, Container, Heading, Image, Stack, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, Heading, Image, Stack, Text, VStack } from '@chakra-ui/react';
 import Food from '../../assets/image/food.jpg';
 
 const Hero = () => {
     return (
-        <Box as='section' backgroundColor='brand.100' bgGradient='linear(to-b, brand.100 75%, white 75%)'>
-            <Container p={4} maxW='2xl'>
-
-                <Stack direction={['column', 'row']}>
+        <Box as='section' backgroundColor='brand.100' bgGradient={{ base: 'brand.100', md: 'linear(to-b, brand.100 75%, white 75%)' }}>
+            <Container>
+                <Flex direction={{ base: 'column-reverse', md: 'row' }} justify='space-between' wrap='wrap' gap={4}>
                     <Box>
                         <VStack spacing={0} align='start'>
                             <Heading as='h1' color='brand.200'>
@@ -18,21 +17,23 @@ const Hero = () => {
                         </VStack>
 
                         <VStack spacing={2} align='start'>
-                            <Text color='white' mt={4}>
+                            <Text color='white' mt={4} maxW='sm'>
                                 We are a family owned Mediterranean restaurant, focused on traditional recipes served with morden twist.
                             </Text>
 
-                            <Button backgroundColor='brand.200'>Reserve a Table</Button>
+                            <Button variant='brandThin'>Reserve a Table</Button>
 
                         </VStack>
 
                     </Box>
 
                     <Box
+                        width='300px'
                         height='300px'
                         rounded='2xl'
-                        width='full'
-                        overflow='hidden'                    >
+                        overflow='hidden'
+                        display={{ base: 'none', md: 'block' }}
+                    >
                         <Image
                             src={Food}
                             fit='cover'
@@ -42,12 +43,8 @@ const Hero = () => {
                         />
                     </Box>
 
-                </Stack>
-
-
-
+                </Flex>
             </Container>
-
         </Box>
     )
 }
