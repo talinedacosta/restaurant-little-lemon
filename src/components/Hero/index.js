@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Container, Flex, Heading, Image, Stack, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, Heading, Image, Text, VStack } from '@chakra-ui/react';
 import Food from '../../assets/image/food.jpg';
 
 const Hero = () => {
