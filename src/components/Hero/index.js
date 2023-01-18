@@ -4,7 +4,7 @@ import Food from '../../assets/image/food.jpg';
 
 const Hero = () => {
     return (
-        <Box as='section' backgroundColor='brand.100' bgGradient={{ base: 'brand.100', md: 'linear(to-b, brand.100 75%, white 75%)' }}>
+        <Box as='section' my={3} backgroundColor='brand.100' bgGradient={{ base: 'brand.100', md: 'linear(to-b, brand.100 75%, white 75%)' }}>
             <Container>
                 <Flex direction={{ base: 'column-reverse', md: 'row' }} justify='space-between' wrap='wrap' gap={4}>
                     <Box>
