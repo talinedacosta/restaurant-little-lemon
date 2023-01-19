@@ -29,8 +29,9 @@ const About = () => {
 
                         <GridItem rowStart='2' rowEnd='3' colStart='1' colEnd='3'>
                             <Box
-                                width='250px'
                                 height='300px'
+                                width='100%'
+                                maxWidth='250px'
                             >
                                 <Image
                                     fit='cover'
@@ -44,7 +45,8 @@ const About = () => {
 
                         <GridItem rowStart='1' rowEnd='3' colStart='2' colEnd='4'>
                             <Box
-                                width='250px'
+                                width='100%'
+                                maxWidth='250px'
                                 height='300px'
                             >
 
