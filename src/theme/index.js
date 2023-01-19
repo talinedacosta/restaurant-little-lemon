@@ -4,10 +4,14 @@ import fonts from './fonts';
 import { brand } from './colors'
 import { containerTheme } from './components/Container'
 import { buttonTheme } from './components/Button';
-
+import { linkTheme } from './components/Link';
 
 const overrides = {
-    styles,
+    styles: {
+        global: {
+            ...styles
+        }
+    },
     fonts: {
         ...fonts
     },
@@ -17,6 +21,7 @@ const overrides = {
     components: {
         Container: containerTheme,
         Button: buttonTheme,
+        Link: linkTheme,
     }
 }
 
