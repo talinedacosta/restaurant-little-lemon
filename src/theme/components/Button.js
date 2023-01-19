@@ -8,7 +8,7 @@ const brandBase = {
     borderRadius: '2xl',
     transition: 'transform 0.15s ease-out',
     _hover: {
-        transform: "scale(1.05, 1.05)"
+        transform: "scale(1.05, 1.05)",
     }
 }
 
