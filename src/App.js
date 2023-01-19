@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 
 import '@fontsource/karla/400.css'
 import '@fontsource/markazi-text/500.css'
@@ -8,9 +9,9 @@ import {
   ChakraProvider,
 } from '@chakra-ui/react';
 import theme from './theme'
+
 import Home from './page/Home';
 import Header from './components/Header';
-import { BrowserRouter } from 'react-router-dom';
 import Footer from './components/Footer';
 
 function App() {
@@ -18,7 +19,10 @@ function App() {
     <BrowserRouter>
       <ChakraProvider theme={theme}>
         <Header />
-        <Home />
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/booking' element={<h1>booking</h1>}></Route>
+        </Routes>
         <Footer />
       </ChakraProvider>
     </BrowserRouter>
