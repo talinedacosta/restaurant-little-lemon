@@ -11,6 +11,7 @@ import theme from './theme'
 import Home from './page/Home';
 import Header from './components/Header';
 import { BrowserRouter } from 'react-router-dom';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <ChakraProvider theme={theme}>
         <Header />
         <Home />
+        <Footer />
       </ChakraProvider>
     </BrowserRouter>
   );
