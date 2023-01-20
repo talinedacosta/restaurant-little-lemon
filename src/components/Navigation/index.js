@@ -12,7 +12,7 @@ const Navigation = ({ ...props }) => {
             <Link as={RouterLink} to='/'>Home</Link>
             <Link href='#about'>About</Link>
             <Link href='#menu'>Menu</Link>
-            <Link href='#reservations'>Reservations</Link>
+            <Link as={RouterLink} to='/booking'>Reservations</Link>
             <Link href='#orderOnline'>Order Online</Link>
             <Link as={RouterLink} to='/login'>Login</Link>
         </Stack>
