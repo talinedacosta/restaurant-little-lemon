@@ -1,7 +1,11 @@
 import React from 'react'
 import { Box, Button, FormControl, FormLabel, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from '@chakra-ui/react'
+import { submitAPI } from '../../api/booking'
+import { useNavigate } from 'react-router-dom'
 
-const BookingForm = ({ availableTimes, updateTimes }) => {
+
+const BookingForm = ({ availableTimes, updateTimes, submitForm }) => {
+    const navigate = useNavigate();
     const availableOccasion = ['Birthday', 'Anniversary'];
 
     const [date, setData] = React.useState(new Date().toISOString().substring(0, 10));
@@ -15,8 +19,17 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
         updateTimes({ type: 'newTime', payload: new Date(value) })
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const response = submitForm({ teste: 'teste' });
+        if (response) {
+            navigate('confirmation')
+        }
+    }
+
     return (
-        <Box as='form'>
+        <Box as='form' onSubmit={handleSubmit}>
             <FormControl my={4} isRequired>
                 <FormLabel>Choose date</FormLabel>
                 <Input type='date' value={date} onChange={handleDateChange} />

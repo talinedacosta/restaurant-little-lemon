@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import { Box, Container, Heading } from '@chakra-ui/react'
 import BookingForm from '../../components/BookingForm'
-import { fetchAPI } from '../../api/booking'
+import { fetchAPI, submitAPI } from '../../api/booking'
 
 const initialState = {
     times: fetchAPI(new Date())
@@ -24,11 +24,9 @@ const Booking = () => {
             <Container>
                 <Box as='section' my={8}>
                     <Heading as='h1' textAlign='center' >Reservation</Heading>
-                    <BookingForm availableTimes={availableTimes} updateTimes={dispatch} />
+                    <BookingForm availableTimes={availableTimes} updateTimes={dispatch} submitForm={submitAPI} />
                 </Box>
-            </Container >
-
-
+            </Container>
         </Box >
     )
 }

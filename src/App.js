@@ -14,6 +14,7 @@ import Home from './page/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Booking from './page/Booking';
+import BookingConfirmation from './page/BookingConfirmation';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/booking' element={<Booking />}></Route>
+          <Route path='/booking/confirmation' element={<BookingConfirmation />}></Route>
         </Routes>
         <Footer />
       </ChakraProvider>
