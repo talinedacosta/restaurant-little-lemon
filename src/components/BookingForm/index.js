@@ -9,17 +9,23 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
     const [occasion, setOccasion] = React.useState();
     const [time, setTime] = React.useState();
 
+    const handleDateChange = (e) => {
+        const value = e.target.value
+        setData(value);
+        updateTimes({ type: 'newTime', payload: new Date(value) })
+    }
+
     return (
         <Box as='form'>
             <FormControl my={4} isRequired>
                 <FormLabel>Choose date</FormLabel>
-                <Input type='date' value={date} onChange={(e) => { setData(e.target.value) }} />
+                <Input type='date' value={date} onChange={handleDateChange} />
             </FormControl>
 
             <FormControl my={4} isRequired>
                 <FormLabel>Choose time</FormLabel>
                 <Select value={time} onChange={(e) => { setTime(e.target.value) }} >
-                    {availableTimes.map((item, index) => {
+                    {availableTimes.times.map((item, index) => {
                         return (
                             <option value={item} key={index}>{item}</option>
                         )

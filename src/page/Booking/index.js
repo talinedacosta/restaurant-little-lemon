@@ -1,16 +1,23 @@
 import React, { useReducer } from 'react'
 import { Box, Container, Heading } from '@chakra-ui/react'
 import BookingForm from '../../components/BookingForm'
+import { fetchAPI } from '../../api/booking'
+
+const initialState = {
+    times: fetchAPI(new Date())
+};
+
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'newTime':
+            return { times: fetchAPI(action.payload) }
+        default: throw new Error();
+
+    }
+}
 
 const Booking = () => {
-
-    const initializeTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-
-    const updateTimes = (state) => {
-        return state
-    }
-
-    const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes)
+    const [availableTimes, dispatch] = useReducer(reducer, initialState)
 
     return (
         <Box as='main'>
