@@ -13,6 +13,7 @@ import theme from './theme'
 import Home from './page/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Booking from './page/Booking';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home />}></Route>
-          <Route path='/booking' element={<h1>booking</h1>}></Route>
+          <Route path='/booking' element={<Booking />}></Route>
         </Routes>
         <Footer />
       </ChakraProvider>
