@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, Button, FormControl, FormLabel, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from '@chakra-ui/react'
-import { submitAPI } from '../../api/booking'
 import { useNavigate } from 'react-router-dom'
 
 
