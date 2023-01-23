@@ -15,6 +15,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Booking from './page/Booking';
 import BookingConfirmation from './page/BookingConfirmation';
+import Login from './page/Login'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/booking' element={<Booking />}></Route>
           <Route path='/booking/confirmation' element={<BookingConfirmation />}></Route>
+          <Route path='/login' element={<Login />}></Route>
         </Routes>
         <Footer />
       </ChakraProvider>
