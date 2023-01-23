@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stack, Link } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 const Navigation = ({ ...props }) => {
     return (
@@ -9,12 +9,12 @@ const Navigation = ({ ...props }) => {
             spacing={4}
             {...props}
         >
-            <Link as={RouterLink} to='/'>Home</Link>
-            <Link href='#about'>About</Link>
-            <Link href='#menu'>Menu</Link>
-            <Link as={RouterLink} to='/booking'>Reservations</Link>
-            <Link href='#orderOnline'>Order Online</Link>
-            <Link as={RouterLink} to='/login'>Login</Link>
+            <Link as={HashLink} smooth to='/'>Home</Link>
+            <Link as={HashLink} smooth to='/#about'>About</Link>
+            <Link as={HashLink} smooth to='/#menu'>Menu</Link>
+            <Link as={HashLink} smooth to='/booking'>Reservations</Link>
+            <Link as={HashLink} smooth to='/#menu'>Order Online</Link>
+            <Link as={HashLink} smooth to='/login'>Login</Link>
         </Stack>
     )
 }
