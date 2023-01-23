@@ -24,7 +24,7 @@ const data = [{
 
 const Highlights = () => {
     return (
-        <Box as='section' my={3}>
+        <Box as='section' id="menu" my={3}>
             <Container>
                 <Flex justifyContent='space-between' pt={4} pb={9}>
                     <Heading>This weeks specials!</Heading>

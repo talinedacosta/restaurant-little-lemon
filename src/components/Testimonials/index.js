@@ -33,7 +33,7 @@ const data = [
 
 const Testimonials = () => {
     return (
-        <Box as='section' my={5} backgroundColor='brand.500'>
+        <Box as='section' id="testimonials" my={5} backgroundColor='brand.500'>
             <Container>
                 <Heading as="h2" textAlign='center' my={4}>Testimonials</Heading>
 

@@ -5,7 +5,7 @@ import Chef from '../../assets/image/chef.jpg'
 
 const About = () => {
     return (
-        <Box as='section'>
+        <Box as='section' id="about">
             <Container>
                 <Flex direction={{ base: 'column', md: 'row' }} justify='space-between' gap={4} alignItems='center'>
                     <Box>
