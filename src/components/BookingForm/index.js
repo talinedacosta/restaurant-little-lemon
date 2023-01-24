@@ -1,73 +1,105 @@
 import React from 'react'
-import { Box, Button, FormControl, FormLabel, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
+import { Box, Button, FormControl, FormErrorMessage, FormLabel, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from '@chakra-ui/react'
+import { Field, Formik } from 'formik';
+import * as Yup from 'yup';
 
 
-const BookingForm = ({ availableTimes, updateTimes, submitForm }) => {
-    const navigate = useNavigate();
-    const availableOccasion = ['Birthday', 'Anniversary'];
+const validationSchema = Yup.object().shape({
+    date: Yup.date().required('Please, choose date'),
+    guests: Yup.number().required('Please, choose guests').positive().integer().min(1, 'At least 1 guest').max(10, 'Max 10 guests'),
+    occasion: Yup.string().required('Please, choose occasion'),
+    time: Yup.string().required('Please, choose time')
+})
 
-    const [date, setData] = React.useState(new Date().toISOString().substring(0, 10));
-    const [guests, setGuests] = React.useState(1);
-    const [occasion, setOccasion] = React.useState();
-    const [time, setTime] = React.useState();
+const BookingForm = ({ availableTimes, updateTimes, submitForm, formData, availableOccasion }) => {
 
-    const handleDateChange = (e) => {
+
+    const handleDateChange = (e, form) => {
         const value = e.target.value
-        setData(value);
+
+        form.setFieldValue('date', value)
+
         updateTimes({ type: 'newTime', payload: new Date(value) })
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const response = submitForm({ teste: 'teste' });
-        if (response) {
-            navigate('confirmation')
-        }
-    }
-
     return (
-        <Box as='form' onSubmit={handleSubmit}>
-            <FormControl my={4} isRequired>
-                <FormLabel>Choose date</FormLabel>
-                <Input type='date' value={date} onChange={handleDateChange} />
-            </FormControl>
+        <Formik
+            initialValues={formData}
+            onSubmit={(values) => {
+                submitForm(values)
+            }}
+            validationSchema={validationSchema}
+        >
+            {
+                ({
+                    handleSubmit, isSubmitting
+                }) => (
+                    <Box as='form' onSubmit={handleSubmit} role="form">
+                        <Field name="date">
+                            {({ field, form }) => (
+                                <FormControl my={4} isRequired isInvalid={form.errors.date && form.touched.date}>
+                                    <FormLabel>Choose date</FormLabel>
+                                    <Input type='date' {...field} onChange={(e) => { handleDateChange(e, form) }} />
+                                    <FormErrorMessage>{form.errors.date}</FormErrorMessage>
+                                </FormControl>
+                            )}
+                        </Field>
 
-            <FormControl my={4} isRequired>
-                <FormLabel>Choose time</FormLabel>
-                <Select value={time} onChange={(e) => { setTime(e.target.value) }} >
-                    {availableTimes.times.map((item, index) => {
-                        return (
-                            <option value={item} key={index}>{item}</option>
-                        )
-                    })}
-                </Select>
-            </FormControl>
+                        <Field name="time">
+                            {({ field, form }) => (
+                                <FormControl my={4} isRequired isInvalid={form.errors.time && form.touched.time}>
+                                    <FormLabel>Choose time</FormLabel>
+                                    <Select {...field} placeholder='Select option'>
+                                        {availableTimes.times.map((item, index) => {
+                                            return (
+                                                <option value={item} key={index}>{item}</option>
+                                            )
+                                        })}
+                                    </Select>
+                                    <FormErrorMessage>{form.errors.time}</FormErrorMessage>
+                                </FormControl>
+                            )}
+                        </Field>
 
-            <FormControl my={4} isRequired>
-                <FormLabel>Choose guests</FormLabel>
-                <NumberInput min={1} max={10} value={guests} onChange={(e) => { setGuests(e.target.value) }} >
-                    <NumberInputField />
-                    <NumberInputStepper>
-                        <NumberIncrementStepper />
-                        <NumberDecrementStepper />
-                    </NumberInputStepper>
-                </NumberInput>
-            </FormControl>
+                        <Field name="guests">
+                            {({ field, form }) => (
+                                <FormControl my={4} isRequired isInvalid={form.errors.guests && form.touched.guests}>
+                                    <FormLabel>Choose guests</FormLabel>
+                                    <NumberInput {...field} onChange={(e) => { form.setFieldValue(field.name, e) }}>
+                                        <NumberInputField />
+                                        <NumberInputStepper>
+                                            <NumberIncrementStepper />
+                                            <NumberDecrementStepper />
+                                        </NumberInputStepper>
+                                    </NumberInput>
+                                    <FormErrorMessage>{form.errors.guests}</FormErrorMessage>
+                                </FormControl>
+                            )}
+                        </Field>
 
-            <FormControl my={4} isRequired>
-                <FormLabel>Occasion</FormLabel>
-                <Select value={occasion} onChange={(e) => { setOccasion(e.target.value) }} >
-                    {availableOccasion.map((item, index) => {
-                        return (<option key={index} value={item}>{item}</option>)
-                    })}
-                </Select>
-            </FormControl>
-            <Button type='submit' variant='brandThick' w='full' my={4}>
-                Make a reservation
-            </Button>
-        </Box>
+                        <Field name="occasion">
+                            {({ field, form }) => (
+                                <FormControl my={4} isRequired isInvalid={form.errors.occasion && form.touched.occasion}>
+                                    <FormLabel>Occasion</FormLabel>
+                                    <Select {...field} placeholder='Select option'>
+                                        {availableOccasion.map((item, index) => {
+                                            return (<option key={index} value={item}>{item}</option>)
+                                        })}
+                                    </Select>
+                                    <FormErrorMessage>{form.errors.occasion}</FormErrorMessage>
+                                </FormControl>
+                            )}
+                        </Field>
+
+                        <Button type='submit' variant='brandThick' w='full' my={4} isLoading={isSubmitting}>
+                            Make a reservation
+                        </Button>
+                    </Box>
+                )
+            }
+
+        </Formik>
+
     )
 }
 
